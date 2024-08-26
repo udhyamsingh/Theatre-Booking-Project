@@ -1,0 +1,102 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class FormField extends JFrame implements ActionListener
+{
+	JTextField tx1=new JTextField(20);
+	JTextField tx2=new JTextField(20);
+	JTextField tx3=new JTextField(20);
+	JTextField tx4=new JTextField(20);
+
+
+	FormField()
+	{
+
+		Font f=new Font("algerian",Font.BOLD,20);
+		setLayout(null);
+		JLabel lb=new JLabel ("PERSONAL DETAILS");
+		lb.setSize(250,50);
+		lb.setLocation(200,25);
+		lb.setFont(f);
+		add(lb);
+		JLabel lb1=new JLabel("ENTER NAME");
+		lb1.setSize(250,50);
+		lb1.setLocation(10,100);
+		lb1.setFont(f);
+		add(lb1);
+		
+		tx1.setSize(250,50);
+		tx1.setLocation(260,100);
+		tx1.setFont(f);
+		add(tx1);
+		JLabel lb2=new JLabel ("ENTER PHONE");
+		lb2.setSize(250,50);
+		lb2.setLocation(10,200);
+		lb2.setFont(f);
+		add(lb2);
+		tx2.setSize(250,50);
+		tx2.setLocation(260,200);
+		tx2.setFont(f);
+		add(tx2);
+		JLabel lb3=new JLabel("ENTER Email");
+		lb3.setSize(250,50);
+		lb3.setLocation(10,300);
+		lb3.setFont(f);
+		add(lb3);
+		tx3.setSize(250,50);
+		tx3.setLocation(260,300);
+		tx3.setFont(f);
+		add(tx3);
+		JLabel lb4=new JLabel("ENTER OTP");
+		lb4.setSize(250,70);
+		lb4.setLocation(10,400);
+		lb4.setFont(f);
+		add(lb4);
+		
+		tx4.setSize(250,50);
+		tx4.setLocation(260,400);
+		tx4.setFont(f);
+		add(tx4);
+         
+		 JButton b1=new JButton("SUBMIT");
+		 b1.setSize(150,50);
+		 b1.setLocation(230,480);
+		 b1.setFont(f);
+		 add(b1);
+		
+		 b1.addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent e) 
+	{
+		try
+		{
+		String name = tx1.getText();
+		String phone = tx2.getText();
+		String email = tx3.getText();
+		String otp = tx4.getText();
+		System.out.println(name+", "+phone+", "+email+", "+otp);
+		Updatingrecords up = new Updatingrecords();
+		up.setData(name,phone,email,otp,buttonId,price);
+		}
+		catch (Exception ex)
+		{
+		}
+	}
+
+	public void createFrame()
+	{
+		setVisible(true);
+		setSize(700,600);
+		setLocation(100,100);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+	String buttonId;
+	int price;
+	public void getTicketValues(String buttonId, int price){
+		this.buttonId = buttonId;
+		this.price = price;
+	}
+}
